@@ -67,11 +67,11 @@ function App() {
 
       <Button text="Login" onClick={() => alert ("login clicked")} />
       <Button text="Submit" onClick={()=> alert ("Form submitted successfully!" )}/>
-      <Button text="Reset" />
-      <Button text="Delete" />
-      <Button text="Save" onClick={() => alert ("Your data saved successfully")}/>
-      <Button text="Start" />
-      <Button text="Register" />
+      <Button text="Reset"onClick={() => alert ("Reset alert")} />
+      <Button text="Delete" onClick={() => alert("Item Deleted")}/>
+      <Button text="Save" onClick={() => alert ("Saved ")}/>
+      <Button text="Start"onClick={() => alert ("login clicked")} />
+      <Button text="Register"onClick={() => alert ("File registered ")} />
     </div>
   );
 }
