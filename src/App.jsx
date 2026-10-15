@@ -63,7 +63,10 @@ import Card from "./Card";
 import "./App.css";
 
 function App() {
-  return (
+  // const isLoggedIn = true;
+  const isLoggedIn = false;
+  return ( 
+
     <div>
       <h1>My App</h1>
 
@@ -96,9 +99,13 @@ function App() {
       <Button text="Delete" onClick={() => alert("Item Deleted")}/>
       <Button text="Save" onClick={() => alert ("Saved ")}/>
       <Button text="Start"onClick={() => alert ("login clicked")} />
+   
       <Button text="Register"onClick={() => alert ("File registered ")} />
+      {/* {isLoggedIn ? <h2>Welcome Back!</h2> : <h2>Please Login</h2>} */}
+      {isLoggedIn && <p>You are logged in!</p>}
     </div>
-  );
+
+ );
 }
 
 export default App;
