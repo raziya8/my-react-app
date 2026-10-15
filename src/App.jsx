@@ -63,11 +63,17 @@ import Card from "./Card";
 import "./App.css";
 
 function App() {
-  // const isLoggedIn = true;
-  const isLoggedIn = false;
+  const isLoggedIn = true;
+  // const isLoggedIn = false;
+ const fruits = ["Apple","Mango","Banana"];
   return ( 
 
     <div>
+      <h2>My Fruits</h2>
+
+{fruits.map((fruit) => (
+  <p key={fruit}>{fruit}</p>
+))}
       <h1>My App</h1>
 
       <Card>Hello Raziya!</Card>
