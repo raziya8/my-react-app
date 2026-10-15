@@ -66,9 +66,22 @@ function App() {
   const isLoggedIn = true;
   // const isLoggedIn = false;
  const fruits = ["Apple","Mango","Banana"];
-  return ( 
+ const products = [
+  { name: "Shoes", price: 999 },
+  { name: "Bag", price: 499 },
+  { name: "watch ", price :799}
+];
+ return ( 
 
     <div>
+<h2>My Products</h2>
+
+{products.map((product) => (
+  <p key={product.name}>
+    {product.name} - ₹{product.price}
+  </p>
+))}
+      
       <h2>My Fruits</h2>
 
 {fruits.map((fruit) => (
