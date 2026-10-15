@@ -59,11 +59,36 @@
 // *************use of Button with help of props////
 
 import Button from "./Button";
+import Card from "./Card";
+import "./App.css";
 
 function App() {
   return (
     <div>
       <h1>My App</h1>
+
+      <Card>Hello Raziya!</Card>
+      <h2> Welcome to react </h2>
+      <p>I am learning props.children</p>
+      <Card>
+  <h2>Raziya's React Journey</h2>
+  <p>Today I learned props.children.</p>
+  <button>Continue Learning</button>
+</Card>
+<Card>
+  <h2 style={{color:"Aqua"}}>My Goals</h2>
+  <p>Learn React</p>
+  <p>Build Projects</p>
+</Card>
+<Card>
+  <h2 className="title">My Skills</h2>
+  <p>HTML, CSS, JavaScript</p>
+</Card>
+
+<Card>
+  <h2 style={{color: "red"}}>My Goal</h2>
+  <p>Become a React Developer</p>
+</Card>
 
       <Button text="Login" onClick={() => alert ("login clicked")} />
       <Button text="Submit" onClick={()=> alert ("Form submitted successfully!" )}/>
@@ -79,3 +104,4 @@ function App() {
 export default App;
 
 // <UserCard name="Raziya" />
+
