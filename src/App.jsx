@@ -80,18 +80,24 @@ function App() {
 
     <div>
 <h2>My Products</h2>
-
+<p>Products found: {filteredProducts.length}</p>
 <input
   type="text"
   placeholder="Search products..."
   value={search}
   onChange={(e) => setSearch(e.target.value)}
 />
-{filteredProducts.map((product) => (
-  <p key={product.name}>
-    {product.name} - ₹{product.price}
-  </p>
-))}
+
+{filteredProducts.length > 0 ? (
+  filteredProducts.map((product) => (
+    <p key={product.name}>
+      {product.name} - ₹{product.price}
+    </p>
+  ))
+) : (
+  <p>No products found!</p>
+)}
+
 
 {/* const filteredProducts = products.filter((product) =>
   product.name.toLowerCase().includes(search.toLowerCase())
