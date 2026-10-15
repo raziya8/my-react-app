@@ -66,7 +66,7 @@ function App() {
       <h1>My App</h1>
 
       <Button text="Login" onClick={() => alert ("login clicked")} />
-      <Button text="Submit" />
+      <Button text="Submit" onClick={()=> alert ("Form submitted successfully!" )}/>
       <Button text="Reset" />
       <Button text="Delete" />
       <Button text="Save" onClick={() => alert ("Your data saved successfully")}/>
