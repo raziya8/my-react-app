@@ -61,8 +61,9 @@
 import Button from "./Button";
 import Card from "./Card";
 import "./App.css";
-
+import { useState } from "react";
 function App() {
+  const [search, setSearch] = useState("");
   const isLoggedIn = true;
   // const isLoggedIn = false;
  const fruits = ["Apple","Mango","Banana"];
@@ -71,16 +72,30 @@ function App() {
   { name: "Bag", price: 499 },
   { name: "watch ", price :799}
 ];
+ const filteredProducts = products.filter(
+  (product) =>
+    product.name.toLowerCase().includes(search.toLowerCase())
+);
  return ( 
 
     <div>
 <h2>My Products</h2>
 
-{products.map((product) => (
+<input
+  type="text"
+  placeholder="Search products..."
+  value={search}
+  onChange={(e) => setSearch(e.target.value)}
+/>
+{filteredProducts.map((product) => (
   <p key={product.name}>
     {product.name} - ₹{product.price}
   </p>
 ))}
+
+{/* const filteredProducts = products.filter((product) =>
+  product.name.toLowerCase().includes(search.toLowerCase())
+); */}
       
       <h2>My Fruits</h2>
 
