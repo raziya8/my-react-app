@@ -72,6 +72,7 @@ const totalPrice = cart.reduce(
   0
 );
 
+
   const [search, setSearch] = useState("");
   const isLoggedIn = true;
   // const isLoggedIn = false;
@@ -93,7 +94,9 @@ const totalPrice = cart.reduce(
 
 <p>Total Price: ₹{totalPrice}</p>
 
-    
+<button onClick={() => setCart([])}>
+  Clear Cart
+</button> 
 <h2>My Products</h2>
 
 <h2>My Cart</h2>
