@@ -63,6 +63,15 @@ import Card from "./Card";
 import "./App.css";
 import { useState } from "react";
 function App() {
+
+const [cart, setCart] = useState([]);
+
+
+const totalPrice = cart.reduce(
+  (total, product) => total + product.price * product.quantity,
+  0
+);
+
   const [search, setSearch] = useState("");
   const isLoggedIn = true;
   // const isLoggedIn = false;
@@ -79,7 +88,31 @@ function App() {
  return ( 
 
     <div>
+    <h2>My Cart</h2>
+    <p>Cart Items: {cart.length}</p>
+
+<p>Total Price: ₹{totalPrice}</p>
+
+    
 <h2>My Products</h2>
+
+<h2>My Cart</h2>
+
+{cart.map((product, index) => (
+  <p key={index}>
+    {product.name} - ₹{product.price} | Qty: {product.quantity}
+    {" "}
+    <button
+      onClick={() =>
+        setCart(cart.filter((item, i) => i !== index))
+      }
+    >
+      Remove
+    </button>
+  </p>
+))}
+
+
 <p>Products found: {filteredProducts.length}</p>
 <input
   type="text"
@@ -88,15 +121,40 @@ function App() {
   onChange={(e) => setSearch(e.target.value)}
 />
 
-{filteredProducts.length > 0 ? (
-  filteredProducts.map((product) => (
-    <p key={product.name}>
-      {product.name} - ₹{product.price}
+
+
+{filteredProducts.map((product) => (
+  <div key={product.name}>
+    <p>
+  {product.name} - ₹{product.price} | Qty: {product.quantity || 1}
     </p>
-  ))
-) : (
-  <p>No products found!</p>
-)}
+
+
+    <button
+  onClick={() => {
+    const existingProduct = cart.find(
+      (item) => item.name === product.name
+    );
+
+    if (existingProduct) {
+      setCart(
+        cart.map((item) =>
+          item.name === product.name
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
+        )
+      );
+    } else {
+      setCart([...cart, { ...product, quantity: 1 }]);
+    }
+  }}
+>
+  Add to Cart
+</button>
+
+  </div>
+))}
+
 
 
 {/* const filteredProducts = products.filter((product) =>
