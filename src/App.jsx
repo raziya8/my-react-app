@@ -88,7 +88,7 @@ const totalPrice = cart.reduce(
  return ( 
 
     <div>
-    <h2>My Cart</h2>
+
     <p>Cart Items: {cart.length}</p>
 
 <p>Total Price: ₹{totalPrice}</p>
@@ -102,6 +102,32 @@ const totalPrice = cart.reduce(
   <p key={index}>
     {product.name} - ₹{product.price} | Qty: {product.quantity}
     {" "}
+    <button
+  onClick={() =>
+    setCart(
+      cart.map((item, i) =>
+        i === index
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      )
+    )
+  }
+>
+  +
+</button>
+<button
+  onClick={() =>
+    setCart(
+      cart.map((item, i) =>
+        i === index && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      )
+    )
+  }
+>
+  -
+</button>
     <button
       onClick={() =>
         setCart(cart.filter((item, i) => i !== index))
