@@ -97,6 +97,11 @@ const totalPrice = cart.reduce(
 <h2>My Products</h2>
 
 <h2>My Cart</h2>
+{cart.length === 0 ? (
+  <p>Your cart is empty!</p>
+) : (
+  <p>You have items in your cart.</p>
+)}
 
 {cart.map((product, index) => (
   <p key={index}>
@@ -147,7 +152,9 @@ const totalPrice = cart.reduce(
   onChange={(e) => setSearch(e.target.value)}
 />
 
-
+{filteredProducts.length === 0 && (
+  <p>No products found!</p>
+)}
 
 {filteredProducts.map((product) => (
   <div key={product.name}>
