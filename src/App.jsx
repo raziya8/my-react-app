@@ -61,17 +61,22 @@
 import Button from "./Button";
 import Card from "./Card";
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 function App() {
 
 const [cart, setCart] = useState([]);
-
+useEffect(() => {
+  document.title = `My Cart (${cart.length})`;
+}, [cart.length]);
 
 const totalPrice = cart.reduce(
   (total, product) => total + product.price * product.quantity,
   0
 );
-
+const totalQuantity = cart.reduce(
+  (total, product) => total + product.quantity,
+  0
+);
 
   const [search, setSearch] = useState("");
   const isLoggedIn = true;
@@ -91,7 +96,7 @@ const totalPrice = cart.reduce(
     <div>
 
     <p>Cart Items: {cart.length}</p>
-
+    <p>Total Quantity: {totalQuantity}</p>
 <p>Total Price: ₹{totalPrice}</p>
 
 <button onClick={() => setCart([])}>
