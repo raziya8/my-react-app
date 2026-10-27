@@ -79,14 +79,41 @@ const totalQuantity = cart.reduce(
 );
 
   const [search, setSearch] = useState("");
+  const [productName, setProductName] = useState("");
+const [productPrice, setProductPrice] = useState("");
   const isLoggedIn = true;
   // const isLoggedIn = false;
  const fruits = ["Apple","Mango","Banana"];
- const products = [
+ const [products, setProducts] = useState([
   { name: "Shoes", price: 999 },
   { name: "Bag", price: 499 },
-  { name: "watch ", price :799}
-];
+  { name: "watch ", price: 799 }
+]);
+const handleAddProduct = () => {
+  if (!productName.trim() || productPrice === "" || Number(productPrice) <= 0) {
+    alert("Product name aur valid price enter karo");
+    return;
+  }
+
+  const alreadyExists = products.some(
+    (product) =>
+      product.name.toLowerCase() === productName.trim().toLowerCase()
+  );
+
+  if (alreadyExists) {
+    alert("Ye product already hai. Dusra naam try karo.");
+    return;
+  }
+
+  const newProduct = {
+    name: productName.trim(),
+    price: Number(productPrice)
+  };
+
+  setProducts([...products, newProduct]);
+  setProductName("");
+  setProductPrice("");
+};
  const filteredProducts = products.filter(
   (product) =>
     product.name.toLowerCase().includes(search.toLowerCase())
@@ -102,6 +129,22 @@ const totalQuantity = cart.reduce(
 <button onClick={() => setCart([])}>
   Clear Cart
 </button> 
+<h2>Add New Product</h2>
+
+<input
+  type="text"
+  placeholder="Enter product name"
+  value={productName}
+  onChange={(e) => setProductName(e.target.value)}
+/>
+
+<input
+  type="number"
+  placeholder="Enter product price"
+  value={productPrice}
+  onChange={(e) => setProductPrice(e.target.value)}
+/>
+<button onClick={handleAddProduct}>Add Product</button>
 <h2>My Products</h2>
 
 <h2>My Cart</h2>
